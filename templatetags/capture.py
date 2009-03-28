@@ -1,3 +1,5 @@
+# my personal "fork" of http://www.djangosnippets.org/snippets/545/
+
 from django import template
 
 register = template.Library()
