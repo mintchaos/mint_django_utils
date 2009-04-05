@@ -1,5 +1,9 @@
 # from http://www.djangosnippets.org/snippets/342/ by miracle2k
 def load_templatetags():
+    """
+    To use this put a `TEMPLATE_TAGS = ()` tuple in your settings.py and call 
+    this function at some point. I put it in my urls.py.
+    """
     from django.conf import settings
     from django.template import add_to_builtins
     # This is important: If the function is called early, and some of the custom
