@@ -9,7 +9,6 @@ def clean_unique_for_date(self, field, date_field='pub_date'):
                      "%s__year" % date_field: date.year,
                      "%s__month" % date_field: date.month,
                      "%s__day" % date_field: date.day }
-        # import pdb; pdb.set_trace()
         try:
             obj = model.objects.get(**get_args)
             if obj.id != self.instance.id:
