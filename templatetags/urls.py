@@ -1,5 +1,5 @@
 """
-This is a hack to get around a defeciency in django's URL tag. Line 19 is the 
+This is a hack to get around a defeciency in django's URL tag. Line 25 is the 
 only added line.
 """
 
