@@ -1,3 +1,4 @@
+import unittest
 from django.template import Library
 from django.template.defaultfilters import lower
 
@@ -66,3 +67,34 @@ def has(obj, arg):
     except TypeError:
         pass
     return False
+
+@register.filter
+def is_empty(value):
+    "Returns a boolean if the value passed has non whitespace"
+    if not value.strip():
+        return True
+    else:
+        return False
+
+class ComparisonTestCase(unittest.TestCase):
+
+    def test_is_empty_empty(self):
+        self.assertEqual(True, is_empty(""))
+
+    def test_is_empty_nl(self):
+        self.assertEqual(True, is_empty("\n"))
+
+    def test_is_empty_nls_and_spaces(self):
+        self.assertEqual(True, is_empty("\n     	\n  "))
+
+    def test_is_empty_a_letter(self):
+        self.assertEqual(False, is_empty("\n     s	\n  "))
+
+    def test_is_empty_less_letters(self):
+        self.assertEqual(False, is_empty("\ns"))
+
+    def test_is_empty_string(self):
+        self.assertEqual(False, is_empty("s"))
+
+if __name__ == '__main__':
+    unittest.main()
